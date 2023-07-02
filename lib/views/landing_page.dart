@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'dart:ui' as ui;
 
 import 'package:tax_simplified_new/config/colours.dart';
-import 'package:tax_simplified_new/main.dart';
 import 'package:tax_simplified_new/ui/rounded_button.dart';
 import 'package:tax_simplified_new/utilities/shared_preferences.dart';
 import 'package:tax_simplified_new/views/home.dart';
