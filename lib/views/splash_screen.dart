@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tax_simplified_new/config/colours.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tax_simplified_new/views/home.dart';
 import 'package:tax_simplified_new/views/landing_page.dart';
+
+import '../utilities/get_it.dart';
+import '../utilities/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -12,12 +14,8 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-
   Future<void> initialize() async {
-    final SharedPreferences prefs = await _prefs;
-    bool firstOpen = !(prefs.getBool('hasBeenOpened') ?? false);
-
+    bool firstOpen = !(await getIt<SharedPrefs>().getBool('hasBeenOpened'));
     Future.delayed(Duration.zero, () {
       Navigator.push(
         context,

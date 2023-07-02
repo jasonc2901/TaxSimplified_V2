@@ -3,8 +3,12 @@ import 'package:flutter/services.dart';
 import 'dart:ui' as ui;
 
 import 'package:tax_simplified_new/config/colours.dart';
+import 'package:tax_simplified_new/main.dart';
 import 'package:tax_simplified_new/ui/rounded_button.dart';
+import 'package:tax_simplified_new/utilities/shared_preferences.dart';
 import 'package:tax_simplified_new/views/home.dart';
+
+import '../utilities/get_it.dart';
 
 class LandingPage extends StatelessWidget {
   const LandingPage({Key? key}) : super(key: key);
@@ -69,9 +73,16 @@ class LandingPage extends StatelessWidget {
                 text: "Get Started",
                 color: orangeColor,
                 padding: screenDimension.height * 0.05,
-                onPressed: () => {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => const HomePage()))
+                onPressed: () async {
+                  await setOpened();
+                  Future.delayed(Duration.zero, () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const HomePage(),
+                      ),
+                    );
+                  });
                 },
               ),
               const SizedBox(
@@ -81,6 +92,10 @@ class LandingPage extends StatelessWidget {
           ),
         ));
   }
+}
+
+Future<void> setOpened() async {
+  await getIt<SharedPrefs>().setBool("hasBeenOpened", true);
 }
 
 Future<ui.Image> loadImage(String imagePath) async {

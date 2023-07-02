@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tax_simplified_new/utilities/get_it.dart';
+import 'package:tax_simplified_new/utilities/shared_preferences.dart';
 import 'package:tax_simplified_new/views/splash_screen.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  getIt.registerSingleton(SharedPrefs(), signalsReady: true);
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -18,13 +21,10 @@ class MyApp extends StatelessWidget {
     ]);
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: MaterialApp(
+      child: const MaterialApp(
         title: 'Tax Simplified',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const Scaffold(
+        home: Scaffold(
           body: SplashScreen(),
         ),
       ),
