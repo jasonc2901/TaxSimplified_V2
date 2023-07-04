@@ -1,9 +1,11 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:tax_simplified_new/config/colours.dart';
+import 'package:tax_simplified_new/functions/functions.dart';
 import 'package:tax_simplified_new/widgets/country_select.dart';
 import 'package:tax_simplified_new/widgets/salary_calculator.dart';
 
+import '../models/taxmodel.dart';
 import '../ui/rounded_button.dart';
 
 // ignore: must_be_immutable
@@ -16,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var salaryController = TextEditingController();
+  var salaryModel = TaxModel(net: 0, gross: 0, tax: 0, userSalary: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -125,13 +128,31 @@ class _HomePageState extends State<HomePage> {
               ),
               const Spacer(),
               RoundedButton(
-                onPressed: () => {},
+                onPressed: () async {
+                  String salaryString = salaryController.text
+                      .replaceAll('£', '')
+                      .replaceAll(',', '');
+
+                  var calculatedModel = await calculateSalary(
+                      salaryString.isNotEmpty ? int.parse(salaryString) : 0);
+
+                  setState(() {
+                    salaryModel = calculatedModel;
+                  });
+                },
                 text: 'Caculate',
                 color: orangeColor,
                 padding: screenSize.height * 0.05,
               ),
               Container(),
               const Spacer(),
+              Text(
+                salaryModel.net.toString(),
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 30,
+                ),
+              )
             ],
           ),
         ),

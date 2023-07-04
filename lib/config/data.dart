@@ -18,9 +18,9 @@ List<Country> countryList = [
     nationalInsuranceHigherPercentage: higherUKNationalInsurance,
     brackets: [
       TaxBracket(range: [0, 12570], percentage: 0),
-      TaxBracket(range: [12571, 37700], percentage: 0.20),
-      TaxBracket(range: [37701, 150000], percentage: 0.40),
-      TaxBracket(range: [150001], percentage: 0.45),
+      TaxBracket(range: [12571, 50270], percentage: 0.20),
+      TaxBracket(range: [50271, 125140], percentage: 0.40),
+      TaxBracket(range: [125141], percentage: 0.45),
     ],
   ),
   Country(
@@ -32,11 +32,12 @@ List<Country> countryList = [
     nationalInsuranceUpperLimit: nationalInsuranceUpperLimit,
     nationalInsuranceHigherPercentage: higherUKNationalInsurance,
     brackets: [
-      TaxBracket(range: [0, 2163], percentage: 0.19),
-      TaxBracket(range: [2164, 13118], percentage: 0.20),
-      TaxBracket(range: [13119, 31092], percentage: 0.21),
-      TaxBracket(range: [31093, 150000], percentage: 0.41),
-      TaxBracket(range: [150001], percentage: 0.46),
+      TaxBracket(range: [0, 12570], percentage: 0),
+      TaxBracket(range: [12571, 14732], percentage: 0.19),
+      TaxBracket(range: [14733, 25688], percentage: 0.20),
+      TaxBracket(range: [25689, 43662], percentage: 0.21),
+      TaxBracket(range: [43663, 125140], percentage: 0.42),
+      TaxBracket(range: [125141], percentage: 0.47),
     ],
   ),
   Country(
@@ -49,9 +50,9 @@ List<Country> countryList = [
     nationalInsuranceHigherPercentage: higherUKNationalInsurance,
     brackets: [
       TaxBracket(range: [0, 12570], percentage: 0),
-      TaxBracket(range: [12571, 37700], percentage: 0.20),
-      TaxBracket(range: [37701, 150000], percentage: 0.40),
-      TaxBracket(range: [150001], percentage: 0.45),
+      TaxBracket(range: [12571, 50270], percentage: 0.20),
+      TaxBracket(range: [50271, 125140], percentage: 0.40),
+      TaxBracket(range: [125141], percentage: 0.45),
     ],
   ),
   Country(
@@ -64,9 +65,9 @@ List<Country> countryList = [
     nationalInsuranceUpperLimit: nationalInsuranceUpperLimit,
     brackets: [
       TaxBracket(range: [0, 12570], percentage: 0),
-      TaxBracket(range: [12571, 37700], percentage: 0.20),
-      TaxBracket(range: [37701, 150000], percentage: 0.40),
-      TaxBracket(range: [150001], percentage: 0.45),
+      TaxBracket(range: [12571, 50270], percentage: 0.20),
+      TaxBracket(range: [50271, 125140], percentage: 0.40),
+      TaxBracket(range: [125141], percentage: 0.45),
     ],
   )
 ];
